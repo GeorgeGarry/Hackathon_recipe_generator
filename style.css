@@ -1,0 +1,340 @@
+/* CSS reset */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap');
+
+/* main CSS */
+
+html{
+    font-family: 'Ysabeau Infant', sans-serif;
+    font-weight: 400;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  background-color: #9ca777;
+  color: white;
+  padding: 20px 0;
+}
+
+.title {
+  width: 270px;
+  font-size: 30px;
+  letter-spacing: 0.6px;
+  text-align: center;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+}
+
+.form-group label {
+  padding-right: 20px;
+}
+
+input,
+select {
+  border-radius: 2px;
+  border: none;
+}
+
+.form-group input {
+  height: 30px;
+}
+
+.form-group select {
+  height: 30px;
+  width: 180px;
+}
+
+.button-6 {
+  width: 140px;
+  margin: 0 auto;
+  display: block;
+}
+
+.button-6 {
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0 auto;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 90%;
+}
+
+.button-6:hover,
+.button-6:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.button-6:hover {
+  transform: translateY(-1px);
+}
+
+.button-6:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+/* recipe CSS */
+
+.result {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-card {
+  width: 280px;
+  margin: 30px auto 10px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 2px;
+  gap: 15px;
+  padding: 30px;
+  font-size: 16px;
+}
+
+.result-title,
+.result-para {
+  text-align: center;
+}
+
+.result-title {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.result-ol-list,
+.result-ul-list {
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-style: italic;
+}
+
+.result-ul-list li,
+.result-ol-list li {
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}
+
+/* media-queries */
+@media only screen and (min-width: 425px) {
+  .container {
+    width: 100%;
+  }
+  .result-card {
+    width: 350px;
+  }
+}
+
+@media only screen and (min-width: 570px) {
+  .container {
+    width: 100%;
+  }
+  .result-card {
+    width: 450px;
+  }
+  .form-group select {
+    width: 145px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    width: 850px;
+    margin: 10px auto;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px 0px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px 0px inset;
+  }
+  .result-card {
+    width: 400px;
+  }
+
+  .form-group{
+    font-size: 18px;
+  }
+
+  .form-group input,.form-group select {
+    width: 200px;
+  }
+
+  .result{
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+    .container{
+        width: 1200px;
+    }
+}
