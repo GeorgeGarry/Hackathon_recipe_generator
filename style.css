@@ -331,12 +331,24 @@ select {
     width: 400px;
   }
 
+  .forms {
+    height: 276px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
   #form{
-    width: 550px;
+    width: 800px;
+    text-align: center;
   }
 
   .form-group{
     font-size: 18px;
+  }
+
+  .button-6{
+    width: 40%;
   }
 
   .form-group input,.form-group select {
@@ -356,6 +368,6 @@ select {
     }
 
     #form{
-    width: 650px;
+    width: 850px;
   }
 }
