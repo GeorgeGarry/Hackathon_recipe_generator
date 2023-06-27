@@ -89,7 +89,7 @@ form.addEventListener("submit", send_request);
 function get_recipe_steps_ingredients_equipment_list(obj) {
     const ol_steps = document.createElement("ol");
     ol_steps.classList.add('result-ol-list')
-  ol_steps.innerText = "Instructions:";
+    ol_steps.innerText = "Instructions:";
   const ul_ingridients = document.createElement("ul");
     ul_ingridients.innerText = "Ingredients:";
     ul_ingridients.classList.add("result-ul-list");
@@ -113,6 +113,10 @@ function get_recipe_steps_ingredients_equipment_list(obj) {
         ingredients_arr.push(ing.name);
       }
     }
+    const li = document.createElement("li");
+    li.classList.add("step");
+      li.innerText = step.step;
+    ol_steps.appendChild(li);
   }
   for (ing of ingredients_arr) {
       const li = document.createElement("li");
@@ -121,10 +125,10 @@ function get_recipe_steps_ingredients_equipment_list(obj) {
     ul_ingridients.appendChild(li);
   }
 
-    const li = document.createElement("li");
-    li.classList.add("step");
-  li.innerText = step.step;
-    ol_steps.appendChild(li);
+    // const li = document.createElement("li");
+    // li.classList.add("step");
+    //   li.innerText = step.step;
+    // ol_steps.appendChild(li);
     
   console.log(equipment_arr);
   for (eqp of equipment_arr) {
