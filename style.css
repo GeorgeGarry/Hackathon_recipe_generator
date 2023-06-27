@@ -268,12 +268,19 @@ select {
 
 .result-ol-list,
 .result-ul-list {
+    
   font-size: 18px;
   display: flex;
   flex-direction: column;
   gap: 15px;
   font-style: italic;
 }
+
+.result-ul-list p{
+    border-top: 1px solid rgba(0, 0, 0, 0.681);
+    padding-top: 20px;
+}
+
 
 .result-ul-list li,
 .result-ol-list li {
@@ -282,6 +289,8 @@ select {
   letter-spacing: 1px;
   word-spacing: 1px;
 }
+
+
 
 /* media-queries */
 @media only screen and (min-width: 425px) {
@@ -296,6 +305,10 @@ select {
 @media only screen and (min-width: 570px) {
   .container {
     width: 100%;
+  }
+
+   #form{
+    width: 450px;
   }
   .result-card {
     width: 450px;
@@ -318,6 +331,10 @@ select {
     width: 400px;
   }
 
+  #form{
+    width: 550px;
+  }
+
   .form-group{
     font-size: 18px;
   }
@@ -337,4 +354,8 @@ select {
     .container{
         width: 1200px;
     }
+
+    #form{
+    width: 650px;
+  }
 }
