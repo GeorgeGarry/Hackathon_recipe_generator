@@ -87,15 +87,21 @@ form.addEventListener("submit", send_request);
 
 // function
 function get_recipe_steps_ingredients_equipment_list(obj) {
-    const ol_steps = document.createElement("ol");
-    ol_steps.classList.add('result-ol-list')
-    ol_steps.innerText = "Instructions:";
+  const ol_steps = document.createElement("ol");
+  ol_steps.classList.add("result-ol-list");
+  const p_instructions = document.createElement("p");
+  p_instructions.innerText = "Instructions:";
+  ol_steps.append(p_instructions);
   const ul_ingridients = document.createElement("ul");
-    ul_ingridients.innerText = "Ingredients:";
-    ul_ingridients.classList.add("result-ul-list");
-    const ul_equipment = document.createElement("ul");
-    ul_equipment.classList.add("result-ul-list");
-  ul_equipment.innerHTML = "You will need:";
+  const p_ingridients = document.createElement("p");
+  p_ingridients.innerText = "Ingredients:";
+  ul_ingridients.append(p_ingridients);
+  ul_ingridients.classList.add("result-ul-list");
+  const ul_equipment = document.createElement("ul");
+  const p_equipment = document.createElement("p");
+  p_equipment.innerText = "You will need::";
+  ul_equipment.append(p_equipment);
+  ul_equipment.classList.add("result-ul-list");
   const steps_obj = obj.analyzedInstructions[0].steps;
 
   let ingredients_arr = [];
@@ -119,21 +125,21 @@ function get_recipe_steps_ingredients_equipment_list(obj) {
     ol_steps.appendChild(li);
   }
   for (ing of ingredients_arr) {
-      const li = document.createElement("li");
-      li.classList.add('ingredient')
+    const li = document.createElement("li");
+    li.classList.add("ingredient");
     li.innerText = ing;
     ul_ingridients.appendChild(li);
   }
 
-    // const li = document.createElement("li");
-    // li.classList.add("step");
-    //   li.innerText = step.step;
-    // ol_steps.appendChild(li);
-    
+  const li = document.createElement("li");
+  li.classList.add("step");
+  li.innerText = step.step;
+  ol_steps.appendChild(li);
+
   console.log(equipment_arr);
   for (eqp of equipment_arr) {
-      const li = document.createElement("li");
-      li.classList.add("equipment");
+    const li = document.createElement("li");
+    li.classList.add("equipment");
     li.innerText = eqp;
     ul_equipment.appendChild(li);
   }
@@ -149,16 +155,16 @@ function display_results(res_array) {
   const container_div = document.getElementById("res_container");
   container_div.innerHTML = "";
   for (i of res_array) {
-      const div_card = document.createElement("div");
-      div_card.classList.add('result-card')
-      const dish_img = document.createElement("img");
-      dish_img.classList.add('result-img')
+    const div_card = document.createElement("div");
+    div_card.classList.add("result-card");
+    const dish_img = document.createElement("img");
+    dish_img.classList.add("result-img");
     dish_img.src = i.image;
-      const title_h3 = document.createElement("h3");
-      title_h3.classList.add('result-title')
+    const title_h3 = document.createElement("h3");
+    title_h3.classList.add("result-title");
     title_h3.innerText = i.title;
-      const calories_p = document.createElement("p");
-      calories_p.classList.add('result-para')
+    const calories_p = document.createElement("p");
+    calories_p.classList.add("result-para");
     calories_p.innerText = `${i.nutrition.nutrients[0].amount} kcal/100g`;
     const recipe_steps_ul =
       get_recipe_steps_ingredients_equipment_list(i).steps;
