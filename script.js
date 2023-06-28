@@ -97,9 +97,9 @@ function get_recipe_steps_ingredients_equipment_list(obj) {
   p_ingridients.innerText = "Ingredients:";
   ul_ingridients.append(p_ingridients);
   ul_ingridients.classList.add("result-ul-list");
-  const ul_equipment = document.createElement("ul");
+  let ul_equipment = document.createElement("ul"); //sometimes there are no equpment in the recipe
   const p_equipment = document.createElement("p");
-  p_equipment.innerText = "You will need::";
+  p_equipment.innerText = "You will need:";
   ul_equipment.append(p_equipment);
   ul_equipment.classList.add("result-ul-list");
   const steps_obj = obj.analyzedInstructions[0].steps;
@@ -108,7 +108,6 @@ function get_recipe_steps_ingredients_equipment_list(obj) {
   let equipment_arr = [];
 
   for (step of steps_obj) {
-    console.log(step);
     for (eqp of step.equipment) {
       if (!equipment_arr.includes(eqp.name)) {
         equipment_arr.push(eqp.name);
@@ -136,12 +135,16 @@ function get_recipe_steps_ingredients_equipment_list(obj) {
   li.innerText = step.step;
   ol_steps.appendChild(li);
 
-  console.log(equipment_arr);
-  for (eqp of equipment_arr) {
-    const li = document.createElement("li");
-    li.classList.add("equipment");
-    li.innerText = eqp;
-    ul_equipment.appendChild(li);
+  // console.log(equipment_arr.length);
+  if (equipment_arr.length > 0){
+    for (eqp of equipment_arr) {
+      const li = document.createElement("li");
+      li.classList.add("equipment");
+      li.innerText = eqp;
+      ul_equipment.appendChild(li);}
+    }
+  else{
+    ul_equipment=null;
   }
 
   return {
@@ -155,6 +158,7 @@ function display_results(res_array) {
   const container_div = document.getElementById("res_container");
   container_div.innerHTML = "";
   for (i of res_array) {
+    const {steps,ingredients,equipment} = get_recipe_steps_ingredients_equipment_list(i);
     const div_card = document.createElement("div");
     div_card.classList.add("result-card");
     const dish_img = document.createElement("img");
@@ -166,19 +170,20 @@ function display_results(res_array) {
     const calories_p = document.createElement("p");
     calories_p.classList.add("result-para");
     calories_p.innerText = `${i.nutrition.nutrients[0].amount} kcal/100g`;
-    const recipe_steps_ul =
-      get_recipe_steps_ingredients_equipment_list(i).steps;
-    const ingredients_ul =
-      get_recipe_steps_ingredients_equipment_list(i).ingredients;
-    const equipment_ul =
-      get_recipe_steps_ingredients_equipment_list(i).equipment;
+    const recipe_steps_ul = steps;
+    const ingredients_ul = ingredients;
+    
 
     div_card.appendChild(dish_img);
     div_card.appendChild(title_h3);
     div_card.appendChild(calories_p);
     div_card.appendChild(recipe_steps_ul);
     div_card.appendChild(ingredients_ul);
-    div_card.appendChild(equipment_ul);
+    if (equipment != null){
+      const equipment_ul = equipment;
+      div_card.appendChild(equipment_ul);
+    }
+    
 
     container_div.appendChild(div_card);
   }
@@ -236,15 +241,9 @@ async function send_request(e) {
       "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
     },
   };
-  let dish_types = [];
-  let equipment = [];
-  let intolerances = [];
-  let diet = [];
-  let cuisine_options = [];
+  
   try {
     const response = await axios.request(options);
-    // console.log(response.data);
-    // console.log(results_on_page);
     if (response.data.results.length >= 5) {
       display_ids = get_random_ids(response.data.results.length);
     } else {
